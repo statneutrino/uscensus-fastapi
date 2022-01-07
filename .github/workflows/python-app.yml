@@ -22,7 +22,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-west-2
     - uses: actions/checkout@v2
-    - uses: iterative/setup-dvc@v1
+    - name: Set-up DVC
+      uses: iterative/setup-dvc@v1
+    - name: Pull data
       run: dvc pull
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
