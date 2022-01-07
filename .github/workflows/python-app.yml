@@ -25,7 +25,9 @@ jobs:
     - name: Set-up DVC
       uses: iterative/setup-dvc@v1
     - name: Pull data
-      run: dvc pull
+      run: |
+        dvc remote add -d s3remote s3://census-fastapi
+        dvc pull
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
