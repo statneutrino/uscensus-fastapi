@@ -30,12 +30,20 @@ def processed_data():
     return X, y, encoder, lb
 
 
-def test_import(census_data):
+def test_import_type(census_data):
     '''
     Tests data imported correctly
     '''
     df = census_data
     assert type(df) == pd.core.frame.DataFrame
+
+    
+
+def test_import_size(census_data):
+    '''
+    Tests data imported correctly
+    '''
+    df = census_data
     assert df['salary'].size > 0
     assert df.shape[1] > 0
 
