@@ -1,0 +1,7 @@
+[core]
+    remote = s3remote
+['remote "localremote"']
+    url = ../../census_local_remote
+['remote "s3remote"']
+    url = s3://census-fastapi
+    region = eu-west-2
