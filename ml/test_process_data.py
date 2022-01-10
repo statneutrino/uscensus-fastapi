@@ -1,14 +1,14 @@
 import pytest
 import pandas as pd
 import numpy as np
-from . import data as d
+from . import process_data
 
 
 @pytest.fixture
 def processed_data():
     df_path = "./data/census_cleaned.csv"
     df = pd.read_csv(df_path)
-    X, y, encoder, lb = d.process_data(df,
+    X, y, encoder, lb = process_data.process_data(df,
             categorical_features=[
             "workclass",
             "education",

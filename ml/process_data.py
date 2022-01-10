@@ -1,7 +1,52 @@
 from joblib import dump
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
+import joblib
+import pandas as pd
+from sklearn.metrics import classification_report
+from sklearn.model_selection import train_test_split
 
+
+def import_data(census_data_path):
+    '''
+    returns dataframe for the csv found at pth
+    input:
+            census_data_path: a path to the data in csv format
+    output:
+            census_df: pandas dataframe containing us census data
+    '''
+    census_df = pd.read_csv(census_data_path)
+
+    return census_df
+
+
+def perform_feature_engineering(
+        feature_set,
+        y,
+        test_size=0.2,
+        seed=42):
+    '''
+    Performs simple feature engineering (spliting into training and test sets)
+    Features are scaled
+    input:
+              feature_set: pandas dataframe with no categorical variables
+              response: string of response name [optional argument that could
+              be used for naming variables or index y column]
+              test size: Proportion of hold-out data for test set
+              seed: seed for randomizing test set allocation
+    output:
+              X_train: X training data
+              X_test: X testing data
+              y_train: y training data
+              y_test: y testing data
+    '''
+
+    # Split data into train and test datasets
+    X_train, X_test, y_train, y_test = train_test_split(
+        feature_set, y, test_size=test_size, random_state=seed
+    )
+
+    return X_train, X_test, y_train, y_test
 
 def process_data(
     X, categorical_features, label="salary", training=True, encoder=None, lb=None
