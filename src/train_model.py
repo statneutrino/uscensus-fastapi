@@ -5,8 +5,9 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
-import importlib.util
 import sys
+sys.path.append('./src/ml/')
+from data import process_data
 
 
 def import_data(census_data_path):
