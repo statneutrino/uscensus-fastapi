@@ -5,7 +5,8 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
-from ml.data import process_data
+import importlib.util
+import sys
 
 
 def import_data(census_data_path):
@@ -94,8 +95,8 @@ def train_rf(
 
 if __name__ == "__main__":
     CENSUS_DF = import_data("./data/census_cleaned.csv")
-
-    print(CENSUS_DF.columns)
+    print(type(CENSUS_DF))
+    # print(CENSUS_DF.columns)
 
     print("Imported data")
 
@@ -115,6 +116,8 @@ if __name__ == "__main__":
 
     print("Processed data with one hot enconding and label binarizer")
 
+    print(y)
+
     X_train, X_test, y_train, y_test = perform_feature_engineering(
         feature_set = X, 
         y = y
@@ -125,7 +128,7 @@ if __name__ == "__main__":
     print("Dimensions of test data:")
     print(X_test.shape)
     print("Training random forest...")
-    train_rf(X_train, X_test, y_train, y_test)
+    # train_rf(X_train, X_test, y_train, y_test)
 
 
 
