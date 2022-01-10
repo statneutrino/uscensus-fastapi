@@ -1,3 +1,4 @@
+from joblib import dump
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 
@@ -58,6 +59,9 @@ def process_data(
         lb = LabelBinarizer()
         X_categorical = encoder.fit_transform(X_categorical)
         y = lb.fit_transform(y.values).ravel()
+
+        # Save OneHotEncoder
+        dump(encoder, 'model/OneHotEnc.pkl')
     else:
         X_categorical = encoder.transform(X_categorical)
         try:
