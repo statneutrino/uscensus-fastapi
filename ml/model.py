@@ -2,7 +2,6 @@ from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 import joblib
-import pandas as pd
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
@@ -72,11 +71,11 @@ def inference(model, X):
     ------
     model : ???
         Trained machine learning model.
-    X : np.array
+    X : pandas data frame
         Data used for prediction.
     Returns
     -------
     preds : np.array
         Predictions from the model.
     """
-    pass
+    return model.predict(X)
