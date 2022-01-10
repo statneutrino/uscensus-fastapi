@@ -1,9 +1,10 @@
-import os
-import yaml
 import logging
+import joblib
 import pandas as pd
+from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
 from ml.data import process_data
 
 
@@ -49,6 +50,48 @@ def perform_feature_engineering(
     return X_train, X_test, y_train, y_test
 
 
+def train_rf(
+    X_train,
+    X_test,
+    y_train,
+    y_test,
+    seed=42,
+    custom_params=None):
+    '''
+    train, store model results:
+    input:
+        X_train: X training data
+        X_test: X testing data
+        y_train: y training data
+        y_test: y testing data
+    output:
+        None
+    '''
+    # Fit random forest classifier and tune parameters using grid search
+    # during CV
+    rfc = RandomForestClassifier(random_state=seed)
+    if custom_params is not None:
+        param_grid = custom_params
+    else:
+        param_grid = {
+            'n_estimators': [50],  # 'n_estimators': [50, 100, 200],
+            'max_features': ['auto', 'sqrt'],
+            'max_depth': [5, 10], # 'max_depth': [5, 10, 100],
+            'criterion': ['gini', 'entropy']
+        }
+    cv_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=5)
+    cv_rfc.fit(X_train, y_train)
+
+    joblib.dump(cv_rfc.best_estimator_, './model/rfc_model.pkl')
+
+    # Create predictions based on best RF model
+    y_train_preds_rf = cv_rfc.best_estimator_.predict(X_train)
+    y_test_preds_rf = cv_rfc.best_estimator_.predict(X_test)
+
+    print(classification_report(y_train, y_train_preds_rf))
+    print(classification_report(y_test, y_test_preds_rf))
+
+
 if __name__ == "__main__":
     CENSUS_DF = import_data("./data/census_cleaned.csv")
 
@@ -81,6 +124,8 @@ if __name__ == "__main__":
     print(X_train.shape)
     print("Dimensions of test data:")
     print(X_test.shape)
+    print("Training random forest...")
+    train_rf(X_train, X_test, y_train, y_test)
 
 
 
