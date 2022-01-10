@@ -7,6 +7,7 @@ from . import model as mod
 from . import process_data as proc_data
 
 
+
 @pytest.fixture
 def rf_model():
     rf_model = joblib.load('./model/rfc_model.pkl')
@@ -86,6 +87,6 @@ def test_inference(encoder, rf_model, test_data, categorical_features):
         encoder = encoder,
         training = False
     )
-    pred = mod.inference(rf_model, processed_data_test[0])
+    pred = rf_model.predict(processed_data_test[0])
     assert set(np.unique(pred)) == {0,1}
 

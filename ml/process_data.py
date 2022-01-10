@@ -117,7 +117,9 @@ def process_data(
         y = lb.fit_transform(y.values).ravel()
 
         # Save OneHotEncoder
+        # Save LabelBinarizer
         dump(encoder, 'model/OneHotEnc.pkl')
+        dump(lb, 'model/LabelBinarizer.pkl')
     else:
         X_categorical = encoder.transform(X_categorical)
         try:

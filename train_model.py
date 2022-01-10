@@ -1,6 +1,7 @@
 import joblib
 import ml.process_data as data_proc
 import ml.model as mod
+import ml.inference as inference
 
 categorical_features=[
         "workclass",
@@ -32,7 +33,7 @@ if __name__ == "__main__":
         y = y
     )
 
-    # # Train model
+    # Train model
     # fitted_model = mod.train_rf_model(X_train, y_train, save_model=True)
     # print("Random forest model fitted")
     # Load model
@@ -43,7 +44,7 @@ if __name__ == "__main__":
     y_test_preds_rf  = fitted_model.predict(X_test)
 
     # Assess model performance
-    test_performance = mod.compute_model_metrics(y_test, y_test_preds_rf)
+    test_performance = inference.compute_model_metrics(y_test, y_test_preds_rf)
     print("Test set F1 Score: {}".format(test_performance[0]))
     print("Test set precision: {}".format(test_performance[1]))
     print("Test set recall: {}".format(test_performance[2]))
@@ -59,9 +60,12 @@ if __name__ == "__main__":
     )
 
     print(processed_data_test[0].shape)
-    predictions = mod.inference(fitted_model, processed_data_test[0])
+    predictions = fitted_model.predict(processed_data_test[0])
     print(predictions)
 
+    # Test model slice function
+    education_metrics = inference.compute_slice_metrics('education', CENSUS_DF)
+    education_metrics.to_csv(path_or_buf='./slice_outputs/education.txt',index=None)
 
 
 
