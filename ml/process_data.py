@@ -49,7 +49,7 @@ def perform_feature_engineering(
     return X_train, X_test, y_train, y_test
 
 def process_data(
-    X, categorical_features, label="salary", training=True, encoder=None, lb=None
+    X, categorical_features=None, label="salary", training=True, encoder=None, lb=None
 ):
     """ Process the data used in the machine learning pipeline.
 
@@ -95,6 +95,17 @@ def process_data(
         X = X.drop([label], axis=1)
     else:
         y = np.array([])
+
+    if categorical_features == None:
+        categorical_features = ["workclass",
+            "education",
+            "marital-status",
+            "occupation",
+            "relationship",
+            "race",
+            "sex",
+            "native-country"
+        ]
 
     X_categorical = X[categorical_features].values
     X_continuous = X.drop(*[categorical_features], axis=1)

@@ -64,14 +64,14 @@ def compute_model_metrics(y, preds):
     return precision, recall, fbeta
 
 
-def inference(model, X):
+def inference(model, df):
     """ Run model inferences and return the predictions.
 
     Inputs
     ------
     model : ???
         Trained machine learning model.
-    X : pandas data frame
+    df : pandas data frame
         Data used for prediction.
     Returns
     -------
@@ -79,3 +79,4 @@ def inference(model, X):
         Predictions from the model.
     """
     return model.predict(X)
+
