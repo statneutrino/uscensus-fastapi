@@ -5,7 +5,7 @@ from . import model as mod
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 
 
-def inference(model, df, encoder=None):
+def inference(df, model=None, encoder=None, output="binary"):
     """ Run model inferences and return the predictions.
 
     Inputs
@@ -21,13 +21,22 @@ def inference(model, df, encoder=None):
     """
     if encoder == None:
         encoder = joblib.load('./model/OneHotEnc.pkl') # Load OneHotEncoder
+
+    if model == None:
+        model = joblib.load('./model/rfc_model.pkl') # Load RandomForestClassifier
+
     processed_data = proc_data.process_data(
         df,
         encoder = encoder,
         training = False
     )
-
-    return model.predict(processed_data[0])
+    pred_y = model.predict(processed_data[0])
+    
+    if output=="binary":
+        return pred_y
+    if output=="string":
+        lb = joblib.load('./model/LabelBinarizer.pkl') # Load LabelBinarizer
+        return str(lb.inverse_transform(pred_y)[0])
 
 
 def compute_model_metrics(y, preds):
