@@ -5,7 +5,7 @@ from . import model as mod
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 
 
-def inference(df, model=None, encoder=None, output="binary"):
+def inference(df, model=None, encoder=None, output="binary",label=None):
     """ Run model inferences and return the predictions.
 
     Inputs
@@ -24,11 +24,13 @@ def inference(df, model=None, encoder=None, output="binary"):
 
     if model == None:
         model = joblib.load('./model/rfc_model.pkl') # Load RandomForestClassifier
-
+    if label is not None:
+        label="salary"
     processed_data = proc_data.process_data(
         df,
         encoder = encoder,
-        training = False
+        training = False,
+        label=None
     )
     pred_y = model.predict(processed_data[0])
     

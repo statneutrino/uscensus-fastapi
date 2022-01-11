@@ -78,7 +78,7 @@ class NewData(BaseModel):
 
 
 # X_categorical = test_df[categorical_features].values
-# y_pred = infer.inference(test_df, output="string")
+# y_pred = infer.inference(test_df, output="string",label=None)
 # print(y_pred)
 
 @app.get("/")

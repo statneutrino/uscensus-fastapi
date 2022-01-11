@@ -89,12 +89,11 @@ def process_data(
         Trained LabelBinarizer if training is True, otherwise returns the binarizer
         passed in.
     """
-    if 'salary' in X.columns and training == True:
-        if label is not None:
-            y = X[label]
-            X = X.drop([label], axis=1)
-        else:
-            y = np.array([])
+    if label is not None:
+        y = X[label]
+        X = X.drop([label], axis=1)
+    else:
+        y = np.array([])
 
     if categorical_features == None:
         categorical_features = ["workclass",
