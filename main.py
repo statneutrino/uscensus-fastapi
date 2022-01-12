@@ -10,14 +10,14 @@ if "DYNO" in os.environ and os.path.isdir(".dvc"):
     if os.system("dvc pull") != 0:
         exit("dvc pull failed")
     os.system("rm -r .dvc .apt/usr/lib/dvc")
-    
+
 
 app = FastAPI()
 
 
 class NewData(BaseModel):
     age: int
-    workclass: str 
+    workclass: str
     fnlgt: int
     education: str
     education_num: int
@@ -69,4 +69,3 @@ async def predict_salary(input_data: NewData):
 
     y_pred = infer.inference(df, output="string")
     return {'results': y_pred}
-

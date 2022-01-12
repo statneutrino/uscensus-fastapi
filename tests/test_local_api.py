@@ -6,6 +6,7 @@ from main import app
 
 client = TestClient(app)
 
+
 @pytest.fixture
 def test_df():
     """
@@ -14,21 +15,21 @@ def test_df():
     Second row should return '>50K' or 1
     """
     test_dict = {
-        'age': [18, 50], 
-        'workclass': ['Never-worked', 'Self-emp-inc'], 
-        'fnlgt': [189778, 189778], 
-        'education': ['Preschool', 'Masters'], 
+        'age': [18, 50],
+        'workclass': ['Never-worked', 'Self-emp-inc'],
+        'fnlgt': [189778, 189778],
+        'education': ['Preschool', 'Masters'],
         'education_num': [2, 15],
-        'marital_status': ['Never-married', 'Married-AF-spouse'], 
-        'occupation': ['Priv-house-serv', 'Prof-specialty'], 
-        'relationship': ['Own-child', 'Wife'], 
-        'race': ['Amer-Indian-Eskimo', 'White'], 
+        'marital_status': ['Never-married', 'Married-AF-spouse'],
+        'occupation': ['Priv-house-serv', 'Prof-specialty'],
+        'relationship': ['Own-child', 'Wife'],
+        'race': ['Amer-Indian-Eskimo', 'White'],
         'sex': ['Female', 'Male'],
-        'capital_gain': [0, 60000], 
-        'capital_loss': [0, 0], 
-        'hours_per_week': [3, 50], 
+        'capital_gain': [0, 60000],
+        'capital_loss': [0, 0],
+        'hours_per_week': [3, 50],
         'native_country': ['Mexico', 'Japan']
-        }
+    }
     test_df = pd.DataFrame(test_dict)
     return test_df
 
@@ -38,9 +39,11 @@ def test_root_status():
     r = client.get("/")
     assert r.status_code == 200
 
+
 def test_root_request_contents():
     r = client.get("/")
-    assert r.json() == {"message":"Welcome to statneutrino's API. This is a greeting only."}
+    assert r.json() == {
+        "message": "Welcome to statneutrino's API. This is a greeting only."}
 
 
 # Test POST method with test data

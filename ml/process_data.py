@@ -48,6 +48,7 @@ def perform_feature_engineering(
 
     return X_train, X_test, y_train, y_test
 
+
 def process_data(
     X, categorical_features=None, label="salary", training=True, encoder=None, lb=None
 ):
@@ -95,16 +96,16 @@ def process_data(
     else:
         y = np.array([])
 
-    if categorical_features == None:
+    if categorical_features is None:
         categorical_features = ["workclass",
-            "education",
-            "marital-status",
-            "occupation",
-            "relationship",
-            "race",
-            "sex",
-            "native-country"
-        ]
+                                "education",
+                                "marital-status",
+                                "occupation",
+                                "relationship",
+                                "race",
+                                "sex",
+                                "native-country"
+                                ]
 
     X_categorical = X[categorical_features].values
     X_continuous = X.drop(*[categorical_features], axis=1)

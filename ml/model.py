@@ -5,7 +5,10 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
 # Optional: implement hyperparameter tuning.
-def train_rf_model(X_train, y_train, seed=42, custom_params=None, save_model=False):
+
+
+def train_rf_model(X_train, y_train, seed=42,
+                   custom_params=None, save_model=False):
     """
     Trains a machine learning model and returns it.
 
@@ -29,14 +32,17 @@ def train_rf_model(X_train, y_train, seed=42, custom_params=None, save_model=Fal
         param_grid = {
             'n_estimators': [50],  # 'n_estimators': [50, 100, 200],
             'max_features': ['auto', 'sqrt'],
-            'max_depth': [5, 10], # 'max_depth': [5, 10, 100],
+            'max_depth': [5, 10],  # 'max_depth': [5, 10, 100],
             'criterion': ['gini', 'entropy']
         }
-    cv_rfc = GridSearchCV(estimator=rfc, param_grid=param_grid, cv=5, scoring='f1')
+    cv_rfc = GridSearchCV(
+        estimator=rfc,
+        param_grid=param_grid,
+        cv=5,
+        scoring='f1')
     cv_rfc.fit(X_train, y_train)
 
     if save_model == True:
         joblib.dump(cv_rfc.best_estimator_, './model/rfc_model.pkl')
 
     return cv_rfc.best_estimator_
-

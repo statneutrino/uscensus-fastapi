@@ -3,34 +3,34 @@ import ml.process_data as data_proc
 import ml.model as mod
 import ml.inference as inference
 
-categorical_features=[
-        "workclass",
-        "education",
-        "marital-status",
-        "occupation",
-        "relationship",
-        "race",
-        "sex",
-        "native-country"
-    ]
+categorical_features = [
+    "workclass",
+    "education",
+    "marital-status",
+    "occupation",
+    "relationship",
+    "race",
+    "sex",
+    "native-country"
+]
 
 if __name__ == "__main__":
     CENSUS_DF = data_proc.import_data("./data/census_cleaned.csv")
 
     print("Imported data")
 
-    X, y, encoder, lb = data_proc.process_data(CENSUS_DF, 
-        label = "salary",
-        categorical_features=categorical_features
-    )
+    X, y, encoder, lb = data_proc.process_data(CENSUS_DF,
+                                               label="salary",
+                                               categorical_features=categorical_features
+                                               )
 
     print("Processed data with one hot enconding and label binarizer")
 
     print(y)
 
     X_train, X_test, y_train, y_test = data_proc.perform_feature_engineering(
-        feature_set = X, 
-        y = y
+        feature_set=X,
+        y=y
     )
 
     # Train model
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     print(type(fitted_model))
 
     # Assess test_performance
-    y_test_preds_rf  = fitted_model.predict(X_test)
+    y_test_preds_rf = fitted_model.predict(X_test)
 
     # Assess model performance
     test_performance = inference.compute_model_metrics(y_test, y_test_preds_rf)
@@ -50,13 +50,13 @@ if __name__ == "__main__":
     print("Test set recall: {}".format(test_performance[2]))
 
     # Test predictions
-    encoder = joblib.load('./model/OneHotEnc.pkl') # Load OneHotEncoder
-    
+    encoder = joblib.load('./model/OneHotEnc.pkl')  # Load OneHotEncoder
+
     processed_data_test = data_proc.process_data(
         CENSUS_DF.sample(5),
         categorical_features=categorical_features,
-        encoder = encoder,
-        training = False
+        encoder=encoder,
+        training=False
     )
 
     print(processed_data_test[0].shape)
@@ -65,7 +65,6 @@ if __name__ == "__main__":
 
     # Test model slice function
     education_metrics = inference.compute_slice_metrics('education', CENSUS_DF)
-    education_metrics.to_csv(path_or_buf='./slice_outputs/education.txt',index=None)
-
-
-
+    education_metrics.to_csv(
+        path_or_buf='./slice_outputs/education.txt',
+        index=None)
