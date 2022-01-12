@@ -1,7 +1,7 @@
 import pytest
 import pandas as pd
 import numpy as np
-from . import process_data
+from ml import process_data
 
 
 @pytest.fixture
