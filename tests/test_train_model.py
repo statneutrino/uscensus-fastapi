@@ -50,7 +50,7 @@ def test_import_size(census_data):
 
 
 def test_feature_engineering_shape(processed_data):
-    X, y, encoder, lb = processed_data
+    X, y, _, _ = processed_data
     X_train, X_test, y_train, y_test = data_proc.perform_feature_engineering(
         feature_set = X, 
         y = y
@@ -62,8 +62,8 @@ def test_feature_engineering_shape(processed_data):
 
 
 def test_feature_engineering_size(processed_data, test_size=0.2):
-    X, y, encoder, lb = processed_data
-    X_train, X_test, y_train, y_test = data_proc.perform_feature_engineering(
+    X, y, _, _ = processed_data
+    _, X_test, _, y_test = data_proc.perform_feature_engineering(
         feature_set = X, 
         y = y
     )

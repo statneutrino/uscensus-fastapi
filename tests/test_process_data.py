@@ -24,10 +24,10 @@ def processed_data():
 
 
 def test_y_binary(processed_data):
-    X, y, encoder, lb = processed_data
+    X, y, _, _ = processed_data
     assert set(np.unique(y)) == {0,1}
     
 
 def test_X_one_hot_enc(processed_data):
-    X, y, encoder, lb = processed_data
+    X, _, _, _ = processed_data
     assert X.dtype == np.float64
