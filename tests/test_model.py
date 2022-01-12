@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 import joblib
 from sklearn.ensemble._forest import RandomForestClassifier
-from . import model as mod
-from . import process_data as proc_data
+from ml import model as mod
+from ml import process_data as proc_data
 
 
 
