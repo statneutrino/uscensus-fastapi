@@ -1,7 +1,6 @@
 import joblib
 import pandas as pd
 from . import process_data as proc_data
-from . import model as mod
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 
 

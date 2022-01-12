@@ -1,7 +1,6 @@
 from fastapi.testclient import TestClient
 import pandas as pd
 import pytest
-import json
 from main import app
 
 client = TestClient(app)

@@ -1,9 +1,7 @@
 from joblib import dump
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
-import joblib
 import pandas as pd
-from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
 
