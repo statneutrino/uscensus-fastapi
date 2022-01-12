@@ -1,6 +1,5 @@
 import joblib
 import ml.process_data as data_proc
-import ml.model as mod
 import ml.inference as inference
 
 categorical_features = [
