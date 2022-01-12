@@ -17,6 +17,14 @@ jobs:
     steps:
     - name: Shield Badge
       uses: alvivi/shield-badge@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
+        aws-bucket: census-fastapi
+        aws-filepath: ${{ github.repository }}
+        label: Custom Badge
+        text: It's Working!
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
