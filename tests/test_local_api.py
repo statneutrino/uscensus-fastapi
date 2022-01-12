@@ -47,7 +47,7 @@ def test_root_request_contents():
 def test_post_low_salary(test_df):
     test_json = test_df.head(1).to_dict(orient="records")[0]
     r = client.post(
-        'http://127.0.0.1:8000/prediction',
+        '/prediction',
         json=test_json,
         headers={'Content-Type': 'application/json'}
     )
@@ -60,7 +60,7 @@ def test_post_high_salary(test_df):
     test_json = test_df.tail(1).to_dict(orient="records")[0]
     print(test_json)
     r = client.post(
-        'http://localhost:8000/prediction',
+        '/prediction',
         json=test_json,
         headers={'Content-Type': 'application/json'}
     )
