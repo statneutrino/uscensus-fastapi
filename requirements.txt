@@ -1,9 +1,12 @@
 anyio==3.5.0
+asgiref==3.4.1
 attrs==21.4.0
 certifi==2021.10.8
 charset-normalizer==2.0.10
+click==8.0.3
 fastapi==0.71.0
 flake8==4.0.1
+h11==0.12.0
 idna==3.3
 iniconfig==1.1.1
 joblib==1.1.0
@@ -30,3 +33,4 @@ threadpoolctl==3.0.0
 toml==0.10.2
 typing_extensions==4.0.1
 urllib3==1.26.8
+uvicorn==0.16.0
