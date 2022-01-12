@@ -1,3 +1,8 @@
-from setuptools import setup, find_packages
+import setuptools
 
-setup(name="ml", packages=find_packages())
+setuptools.setup(
+    name="ml",
+    version="0.0.0",
+    description="Starter code.",
+    author="Student",
+)
