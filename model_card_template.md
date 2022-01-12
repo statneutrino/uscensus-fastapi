@@ -34,7 +34,7 @@ at the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets
 ## Metrics
 Evaluation metrics include
 
-- Precision <img src="https://render.githubusercontent.com/render/math?math==\frac{tp}{tp+fp}">
+- Precision <img src="https://render.githubusercontent.com/render/math?math==\frac{tp}{tp %2Bfp}">
 - F1 score and False Negative Rate to
 measure disproportionate model performance errors across subgroups. False
 Discovery Rate and False Omission Rate, which measure the fraction of negative (not smiling) and positive (smiling) predictions that are incorrectly predicted
