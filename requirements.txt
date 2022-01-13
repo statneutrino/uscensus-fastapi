@@ -34,3 +34,4 @@ toml==0.10.2
 typing_extensions==4.0.1
 urllib3==1.26.8
 uvicorn==0.16.0
+pytest-cov
