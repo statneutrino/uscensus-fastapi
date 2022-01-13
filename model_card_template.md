@@ -54,14 +54,8 @@ See slice_ouput.txt for performance on Education, Sex and Race subcategories
 
 #### Data:
 This dataset has no sensitive data
-#### Usage
+#### Usage risks and harms
 There is the potential to use this data for abuse around hiring or salary benchmarking. We used data sliceing to investigate model bias.
-#### Risks and harms: What risks may be present in model usage? Try
-to identify the potential recipients, likelihood, and magnitude of
-harms. If these cannot be determined, note that they were considered but remain unknown.
-Use cases: Are there any known model use cases that are especially
-fraught? This may connect directly to the intended use section of
-the model card
 
 ## Caveats and Recommendations
 Accuracy is generally quite poor. As a dichotomous prediction (above or below 50k), the classifier has limited use. A better dataset with income
