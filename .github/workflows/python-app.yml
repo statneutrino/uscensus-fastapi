@@ -45,9 +45,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        python -m pytest tests/
-    # - name: Configure AWS Credentials
-    #   uses: aws-actions/configure-aws-credentials@v1
-    #   with:
-    #     role-to-assume: arn:aws:iam::123456789100:role/my-github-actions-role
-    #     aws-region: eu-west-2
+        python -m pytest tests/ --cache-clear --cov=app test/ > pytest-coverage.txt
+    - name: Comment coverage
+      uses: coroo/pytest-coverage-commentator@v1.0.2
