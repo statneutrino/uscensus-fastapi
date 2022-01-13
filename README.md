@@ -1,3 +1,5 @@
+# Predicting Salary with US Censys Data - Deploying ML model on Heroku with FastAPI
+
 ![example workflow](https://github.com/statneutrino/uscensus-fastapi/actions/workflows/python-app.yml/badge.svg)
 
 This github repository contains an online API for a simple classification model
@@ -29,8 +31,35 @@ The badge above tracks whether CI is passing. More details can be found at the [
 
 - Model performance on data slices for categories education, sex and race can be found at [slice_outputs/slice_output.txt](./slice_outputs/slice_output.txt)
 - [Screenshot](./screenshots/example.png) of example json on FastAPI docs page
+- Screenshot of browser [contents of GET](./screenshots/live_get.png) 
+- Screenshot of successful [test of POSTS to API](./screenshots/live_post.png) 
 
 ### Testing the live API using request module
+
+You can use the API to predict the salary for an individual using python request module or curl. An example curl command would be:
+
+```
+curl -X 'POST' \
+  'https://uscensus-fastapi.herokuapp.com/prediction' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "age": 20,
+  "workclass": "Self-emp-not-inc",
+  "fnlgt": 205100,
+  "education": "HS-grad",
+  "education_num": 9,
+  "marital_status": "Married-civ-spouse",
+  "occupation": "Exec-managerial",
+  "relationship": "Wife",
+  "race": "White",
+  "sex": "Female",
+  "capital_gain": 0,
+  "capital_loss": 0,
+  "hours_per_week": 40,
+  "native_country": "United-States"
+}'
+```
 
 ### If you want to do the same - how to run on Heroku
 
