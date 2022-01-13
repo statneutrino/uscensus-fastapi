@@ -48,6 +48,11 @@ curl -X 'POST' \
 }'
 ```
 
+### Coverage reporting
+
+Coverage is now assessed using [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/readme.html) automatically on pushing commits. The report can be seen in the
+[Github Actions page](https://github.com/statneutrino/uscensus-fastapi/actions) on the most recent build workflow under the pytest heading.
+
 ### Use of remote storage
 
 Models and data are stored in an AWS S3 bucket and pulled by DVC on Heroku when the API starts.
