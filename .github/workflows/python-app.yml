@@ -45,7 +45,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        python -m pytest tests/ --cache-clear --cov=. > pytest-coverage.txt
+        python -m pytest --cache-clear --cov=. tests/ > pytest-coverage.txt
     - name: Comment coverage
       uses: coroo/pytest-coverage-commentator@v1.0.2
       with:
