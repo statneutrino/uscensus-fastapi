@@ -74,7 +74,7 @@ def compute_model_metrics(y, preds):
     return accuracy, precision, recall, f1, auc
 
 
-def create_slice_metrics_df(cat_feature, df, model=None, lb=None):
+def create_slice_metrics_df(cat_feature, df, model=None, lb=None, label=None):
     """
     computes performance on model slices.
     I.e. a function that computes the performance metrics when the value of a
@@ -112,7 +112,8 @@ def create_slice_metrics_df(cat_feature, df, model=None, lb=None):
         pred_for_slice = inference(
             df[df[cat_feature] == slice],
             model=model, 
-            encoder=None)
+            encoder=None,
+            label=label)
         y = lb.transform(df['salary'][df[cat_feature] == slice]).ravel()
         accuracy, f1, precision, recall, auc = compute_model_metrics(y, pred_for_slice)
         slice_metrics.loc[count] = [slice, accuracy, f1, precision, recall, auc]

@@ -73,7 +73,7 @@ if __name__ == "__main__":
     
     with open('slice_outputs/slice_output.txt', 'w') as f:
         for slice in slices_to_test:
-            metric_df = inference.create_slice_metrics_df(slice, CENSUS_DF)
+            metric_df = inference.create_slice_metrics_df(slice, CENSUS_DF, label="salary")
             f.write("\n")
             f.write("Estimating performance for {} categories:\n".format(slice))
             for _, row in metric_df.iterrows():
