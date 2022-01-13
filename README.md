@@ -34,9 +34,14 @@ The badge above tracks whether CI is passing. More details can be found at the [
 - Screenshot of browser [contents of GET](./screenshots/live_get.png) 
 - Screenshot of successful [test of POSTS to API](./screenshots/live_post.png) 
 
-### Testing the live API using request module
+### POST requests to live API on Heroku
 
-You can use the API to predict the salary for an individual using python request module or curl. An example curl command would be:
+POST requests are used to send data to the API.
+You can use the API to predict the salary by:
+- using the docs page on the Heroku at 
+[https://uscensus-fastapi.herokuapp.com/docs/](https://uscensus-fastapi.herokuapp.com/docs#/default/predict_salary_prediction_post)
+- use the requests for an individual using python request module (see [example in this repository](./tests/live_api.py))
+- use curl: an example curl command would be:
 
 ```
 curl -X 'POST' \
