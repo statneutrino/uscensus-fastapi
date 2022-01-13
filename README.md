@@ -11,7 +11,7 @@ The machine learning is a very simple random forest classifier, and can be repla
 - implement production frameworks such as Continuous Integration and Continuous Deployment
 - ensure pipeliness pass unit tests before deployment
 - testing of local and live API
-- use of DVC (data version control with git).
+- use a remote data pipeline and storage with AWS S3 and implement DVC (data version control) with git.
 
 This is a project completed as part of the Udacity Machine Learning
 DevOps Engineer Nanodegree. 
