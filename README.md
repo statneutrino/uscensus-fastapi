@@ -16,24 +16,6 @@ The machine learning is a very simple random forest classifier, and can be repla
 This is a project completed as part of the Udacity Machine Learning
 DevOps Engineer Nanodegree. 
 
-### Use of remote storage
-
-Models and data are stored in an AWS S3 bucket and pulled by DVC on Heroku when the API starts.
-
-### CI/CD
-
-Continuous Integration and Continuous Deployment (CI/CD) practices were used. Every commit push triggers a Github workflow, and unit tests using pytest are run before
-master branch is automatically deployed to Heroku.
-
-The badge above tracks whether CI is passing. More details can be found at the [Actions page](https://github.com/statneutrino/uscensus-fastapi/actions)
-
-### Other files (for project rubric)
-
-- Model performance on data slices for categories education, sex and race can be found at [slice_outputs/slice_output.txt](./slice_outputs/slice_output.txt)
-- [Screenshot](./screenshots/example.png) of example json on FastAPI docs page
-- Screenshot of browser [contents of GET](./screenshots/live_get.png) 
-- Screenshot of successful [test of POSTS to API](./screenshots/live_post.png) 
-
 ### POST requests to live API on Heroku
 
 POST requests are used to send data to the API.
@@ -65,6 +47,24 @@ curl -X 'POST' \
   "native_country": "United-States"
 }'
 ```
+
+### Use of remote storage
+
+Models and data are stored in an AWS S3 bucket and pulled by DVC on Heroku when the API starts.
+
+### CI/CD
+
+Continuous Integration and Continuous Deployment (CI/CD) practices were used. Every commit push triggers a Github workflow, and unit tests using pytest are run before
+master branch is automatically deployed to Heroku.
+
+The badge above tracks whether CI is passing. More details can be found at the [Actions page](https://github.com/statneutrino/uscensus-fastapi/actions)
+
+### Other files (for project rubric)
+
+- Model performance on data slices for categories education, sex and race can be found at [slice_outputs/slice_output.txt](./slice_outputs/slice_output.txt)
+- [Screenshot](./screenshots/example.png) of example json on FastAPI docs page
+- Screenshot of browser [contents of GET](./screenshots/live_get.png) 
+- Screenshot of successful [test of POSTS to API](./screenshots/live_post.png) 
 
 ### If you want to do the same - how to run on Heroku
 
