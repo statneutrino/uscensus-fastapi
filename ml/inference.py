@@ -111,11 +111,13 @@ def create_slice_metrics_df(cat_feature, df, model=None, lb=None, label=None):
     for count, slice in enumerate(df[cat_feature].unique()):
         pred_for_slice = inference(
             df[df[cat_feature] == slice],
-            model=model, 
+            model=model,
             encoder=None,
             label=label)
         y = lb.transform(df['salary'][df[cat_feature] == slice]).ravel()
-        accuracy, f1, precision, recall, auc = compute_model_metrics(y, pred_for_slice)
-        slice_metrics.loc[count] = [slice, accuracy, f1, precision, recall, auc]
+        accuracy, f1, precision, recall, auc = compute_model_metrics(
+            y, pred_for_slice)
+        slice_metrics.loc[count] = [
+            slice, accuracy, f1, precision, recall, auc]
 
     return slice_metrics
