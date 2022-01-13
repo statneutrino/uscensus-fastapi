@@ -1,4 +1,4 @@
-# Predicting Salary with US Censys Data - Deploying ML model on Heroku with FastAPI
+# Predicting Salary with US Census Data - Deploying ML model on Heroku with FastAPI
 
 ![example workflow](https://github.com/statneutrino/uscensus-fastapi/actions/workflows/python-app.yml/badge.svg)
 
