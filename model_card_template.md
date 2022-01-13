@@ -32,13 +32,18 @@ at the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets
 20% hold-out data was used
 
 ## Metrics
-Evaluation metrics include
+Evaluation metrics include:
 
-- Precision <img src="https://render.githubusercontent.com/render/math?math==\frac{tp}{tp %2Bfp}">
-- F1 score and False Negative Rate to
+- Precision <img src="https://render.githubusercontent.com/render/math?math==\frac{tp}{tp %2Bfp}"> where tp is true positive and fp is false positive
+- Recall <img src="https://render.githubusercontent.com/render/math?math==\frac{tp}{tp %2Btn}"> where tp is true positive and tn is true negative
+- F1 score which is the harmonic mean of Precision and Recall, or <img src="https://render.githubusercontent.com/render/math?math=\frac{2}{recall^{-1} %2Bprecision}">
 measure disproportionate model performance errors across subgroups. False
 Discovery Rate and False Omission Rate, which measure the fraction of negative (not smiling) and positive (smiling) predictions that are incorrectly predicted
 to be positive and negative, respectively, are also reported. 
+
+### Model Performance on Test Set
+
+
 
 ## Ethical Considerations
 

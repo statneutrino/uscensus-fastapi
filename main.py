@@ -67,5 +67,5 @@ async def predict_salary(input_data: NewData):
     # Change underscores in df column names
     df.columns = df.columns.str.replace("_", "-")
 
-    y_pred = infer.inference(df, output="string")
+    y_pred = infer.inference(df, output="string", label=None)
     return {'results': y_pred}

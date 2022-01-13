@@ -1,7 +1,7 @@
 import joblib
 import pandas as pd
 from . import process_data as proc_data
-from sklearn.metrics import fbeta_score, precision_score, recall_score
+from sklearn.metrics import accuracy_score, roc_auc_score, f1_score, precision_score, recall_score
 
 
 def inference(df, model=None, encoder=None, output="binary", label=None):
@@ -18,6 +18,9 @@ def inference(df, model=None, encoder=None, output="binary", label=None):
     preds : np.array
         Predictions from the model.
     """
+
+    lb = joblib.load('./model/LabelBinarizer.pkl')
+
     if encoder is None:
         encoder = joblib.load('./model/OneHotEnc.pkl')  # Load OneHotEncoder
 
@@ -26,12 +29,15 @@ def inference(df, model=None, encoder=None, output="binary", label=None):
         model = joblib.load('./model/rfc_model.pkl')
     if label is not None:
         label = "salary"
+
     processed_data = proc_data.process_data(
-        df,
+        X=df,
         encoder=encoder,
         training=False,
-        label=None
+        label=label,
+        lb=lb
     )
+
     pred_y = model.predict(processed_data[0])
 
     if output == "binary":
@@ -57,13 +63,18 @@ def compute_model_metrics(y, preds):
     recall : float
     fbeta : float
     """
-    fbeta = fbeta_score(y, preds, beta=1, zero_division=1)
-    precision = precision_score(y, preds, zero_division=1)
-    recall = recall_score(y, preds, zero_division=1)
-    return precision, recall, fbeta
+    accuracy = round(accuracy_score(y, preds), 3)
+    f1 = round(f1_score(y, preds, zero_division=0), 1)
+    precision = round(precision_score(y, preds, zero_division=1), 3)
+    recall = round(recall_score(y, preds, zero_division=1), 3)
+    try:
+        auc = round(roc_auc_score(y, preds), 3)
+    except ValueError:
+        auc = -1
+    return accuracy, precision, recall, f1, auc
 
 
-def compute_slice_metrics(cat_feature, df, model=None, lb=None):
+def create_slice_metrics_df(cat_feature, df, model=None, lb=None):
     """
     computes performance on model slices.
     I.e. a function that computes the performance metrics when the value of a
@@ -92,14 +103,18 @@ def compute_slice_metrics(cat_feature, df, model=None, lb=None):
     slice_metrics = pd.DataFrame(
         columns=(
             'slice',
-            'f1',
+            'accuracy',
             'precision',
-            'recall'))
+            'recall',
+            'f1',
+            'auc'))
     for count, slice in enumerate(df[cat_feature].unique()):
         pred_for_slice = inference(
-            model, df[df[cat_feature] == slice], encoder=None)
+            df[df[cat_feature] == slice],
+            model=model, 
+            encoder=None)
         y = lb.transform(df['salary'][df[cat_feature] == slice]).ravel()
-        fbeta, precision, recall = compute_model_metrics(y, pred_for_slice)
-        slice_metrics.loc[count] = [slice, fbeta, precision, recall]
+        accuracy, f1, precision, recall, auc = compute_model_metrics(y, pred_for_slice)
+        slice_metrics.loc[count] = [slice, accuracy, f1, precision, recall, auc]
 
     return slice_metrics

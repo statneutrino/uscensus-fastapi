@@ -1,0 +1,176 @@
+
+Estimating performance for education categories:
+
+Model metrics for Bachelors education category:
+Test set Accuracy score: 0.817
+Test set F1 score: 0.747
+Test set precision: 0.843
+Test set recall: 0.8
+Test set AUC: 0.82
+
+Model metrics for HS-grad education category:
+Test set Accuracy score: 0.869
+Test set F1 score: 0.993
+Test set precision: 0.181
+Test set recall: 0.3
+Test set AUC: 0.591
+
+Model metrics for 11th education category:
+Test set Accuracy score: 0.964
+Test set F1 score: 1.0
+F1 is reported as 1.  All predictions and labels are likely negative class
+Test set precision: 0.3
+Test set recall: 0.5
+Test set AUC: 0.65
+
+Model metrics for Masters education category:
+Test set Accuracy score: 0.817
+Test set F1 score: 0.817
+Test set precision: 0.865
+Test set recall: 0.8
+Test set AUC: 0.811
+
+Model metrics for 9th education category:
+Test set Accuracy score: 0.953
+Test set F1 score: 1.0
+F1 is reported as 1.  All predictions and labels are likely negative class
+Test set precision: 0.111
+Test set recall: 0.2
+Test set AUC: 0.556
+
+Model metrics for Some-college education category:
+Test set Accuracy score: 0.854
+Test set F1 score: 0.96
+Test set precision: 0.244
+Test set recall: 0.4
+Test set AUC: 0.621
+
+Model metrics for Assoc-acdm education category:
+Test set Accuracy score: 0.832
+Test set F1 score: 0.93
+Test set precision: 0.351
+Test set recall: 0.5
+Test set AUC: 0.671
+
+Model metrics for Assoc-voc education category:
+Test set Accuracy score: 0.806
+Test set F1 score: 0.951
+Test set precision: 0.271
+Test set recall: 0.4
+Test set AUC: 0.633
+
+Model metrics for 7th-8th education category:
+Test set Accuracy score: 0.946
+Test set F1 score: 1.0
+F1 is reported as 1.  All predictions and labels are likely negative class
+Test set precision: 0.125
+Test set recall: 0.2
+Test set AUC: 0.562
+
+Model metrics for Doctorate education category:
+Test set Accuracy score: 0.789
+Test set F1 score: 0.861
+Test set precision: 0.853
+Test set recall: 0.9
+Test set AUC: 0.73
+
+Model metrics for Prof-school education category:
+Test set Accuracy score: 0.847
+Test set F1 score: 0.875
+Test set precision: 0.924
+Test set recall: 0.9
+Test set AUC: 0.779
+
+Model metrics for 5th-6th education category:
+Test set Accuracy score: 0.967
+Test set F1 score: 1.0
+F1 is reported as 1.  All predictions and labels are likely negative class
+Test set precision: 0.312
+Test set recall: 0.5
+Test set AUC: 0.656
+
+Model metrics for 10th education category:
+Test set Accuracy score: 0.942
+Test set F1 score: 1.0
+F1 is reported as 1.  All predictions and labels are likely negative class
+Test set precision: 0.129
+Test set recall: 0.2
+Test set AUC: 0.565
+
+Model metrics for 1st-4th education category:
+Test set Accuracy score: 0.97
+Test set F1 score: 1.0
+F1 is reported as 1.  All predictions and labels are likely negative class
+Test set precision: 0.167
+Test set recall: 0.3
+Test set AUC: 0.583
+
+Model metrics for Preschool education category:
+Test set Accuracy score: 1.0
+Test set F1 score: 1.0
+F1 is reported as 1.  All predictions and labels are likely negative class
+Test set precision: 1.0
+Test set recall: 0.0
+Recall is reported as 1.  TP + FN is likely 0Test set AUC: -1.0
+AUC is reported as -1 - only one class has been predicted and therefore AUC cannot be determined
+
+Model metrics for 12th education category:
+Test set Accuracy score: 0.942
+Test set F1 score: 1.0
+F1 is reported as 1.  All predictions and labels are likely negative class
+Test set precision: 0.242
+Test set recall: 0.4
+Test set AUC: 0.621
+
+Estimating performance for sex categories:
+
+Model metrics for Male sex category:
+Test set Accuracy score: 0.824
+Test set F1 score: 0.809
+Test set precision: 0.556
+Test set recall: 0.7
+Test set AUC: 0.749
+
+Model metrics for Female sex category:
+Test set Accuracy score: 0.933
+Test set F1 score: 0.885
+Test set precision: 0.449
+Test set recall: 0.6
+Test set AUC: 0.721
+
+Estimating performance for race categories:
+
+Model metrics for White race category:
+Test set Accuracy score: 0.852
+Test set F1 score: 0.82
+Test set precision: 0.541
+Test set recall: 0.7
+Test set AUC: 0.75
+
+Model metrics for Black race category:
+Test set Accuracy score: 0.923
+Test set F1 score: 0.844
+Test set precision: 0.46
+Test set recall: 0.6
+Test set AUC: 0.724
+
+Model metrics for Asian-Pac-Islander race category:
+Test set Accuracy score: 0.848
+Test set F1 score: 0.746
+Test set precision: 0.649
+Test set recall: 0.7
+Test set AUC: 0.784
+
+Model metrics for Amer-Indian-Eskimo race category:
+Test set Accuracy score: 0.936
+Test set F1 score: 0.9
+Test set precision: 0.5
+Test set recall: 0.6
+Test set AUC: 0.746
+
+Model metrics for Other race category:
+Test set Accuracy score: 0.93
+Test set F1 score: 0.65
+Test set precision: 0.52
+Test set recall: 0.6
+Test set AUC: 0.746

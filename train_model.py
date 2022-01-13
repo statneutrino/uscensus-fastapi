@@ -42,11 +42,13 @@ if __name__ == "__main__":
     # Assess test_performance
     y_test_preds_rf = fitted_model.predict(X_test)
 
-    # Assess model performance
-    test_performance = inference.compute_model_metrics(y_test, y_test_preds_rf)
-    print("Test set F1 Score: {}".format(test_performance[0]))
-    print("Test set precision: {}".format(test_performance[1]))
-    print("Test set recall: {}".format(test_performance[2]))
+    # Assess overall model performance
+    accuracy, f1, precision, recall, auc = inference.compute_model_metrics(y_test, y_test_preds_rf)
+    print("Test set Accuracy score: {}".format(accuracy))
+    print("Test set F1 score: {}".format(f1))
+    print("Test set precision: {}".format(precision))
+    print("Test set recall: {}".format(recall))
+    print("Test set AUC: {}".format(auc))
 
     # Test predictions
     encoder = joblib.load('./model/OneHotEnc.pkl')  # Load OneHotEncoder
@@ -58,12 +60,36 @@ if __name__ == "__main__":
         training=False
     )
 
-    print(processed_data_test[0].shape)
     predictions = fitted_model.predict(processed_data_test[0])
-    print(predictions)
 
-    # Test model slice function
-    education_metrics = inference.compute_slice_metrics('education', CENSUS_DF)
-    education_metrics.to_csv(
-        path_or_buf='./slice_outputs/education.txt',
-        index=None)
+    #Test model slice function
+    # education_metrics = inference.create_slice_metrics_df('education', CENSUS_DF)
+    # education_metrics.to_csv(
+    #     path_or_buf='./slice_outputs/education.txt',
+    #     index=None)
+
+    # Produce printout of slice model prediction performance:
+    slices_to_test = ['education', 'sex', 'race']
+    
+    with open('slice_outputs/slice_output.txt', 'w') as f:
+        for slice in slices_to_test:
+            metric_df = inference.create_slice_metrics_df(slice, CENSUS_DF)
+            f.write("\n")
+            f.write("Estimating performance for {} categories:\n".format(slice))
+            for _, row in metric_df.iterrows():
+                f.write("\n")
+                category, accuracy, f1, precision, recall, auc = row.values
+                f.write("Model metrics for {} {} category:\n".format(category, slice))
+                f.write("Test set Accuracy score: {}\n".format(accuracy))
+                f.write("Test set F1 score: {}\n".format(f1))
+                if f1 == 1:
+                    f.write("F1 is reported as 1.  All predictions and labels are likely negative class\n")
+                f.write("Test set precision: {}\n".format(precision))
+                if precision == 0:
+                    f.write("Precision is reported as 1.  All predictions and labels are likely negative class\n")
+                f.write("Test set recall: {}\n".format(recall))
+                if recall == 0:
+                    f.write("Recall is reported as 1.  TP + FN is likely 0")
+                f.write("Test set AUC: {}\n".format(auc))
+                if auc == -1:
+                    f.write("AUC is reported as -1 - only one class has been predicted and therefore AUC cannot be determined\n")
