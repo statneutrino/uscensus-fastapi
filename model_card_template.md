@@ -1,10 +1,6 @@
-# Model Card
-
-For additional information see the Model Card paper: https://arxiv.org/pdf/1810.03993.pdf
-
 ## Model Details
 Pre-trained Random Forest classifier using scikit-learn framework,
-on the Census Income Data Set, trained using cross-validation to predict whether salary of an 
+on the [Census Income Data Set](https://archive.ics.uci.edu/ml/datasets/Census+Income), trained using cross-validation to predict whether salary of an 
 individual or range of individuals is under or 
 over $50k.
 
@@ -25,7 +21,7 @@ It is not intended to estimate actual individual's salaries or used to inform pa
 The training data used was the US Census Income Data Set which can be found 
 at the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Census+Income)
 
-80% of the data was used for cross-validation
+80% of the data was used for cross-validation.
 
 ## Evaluation Data
 
@@ -53,7 +49,8 @@ See slice_ouput.txt for performance on Education, Sex and Race subcategories
 ## Ethical Considerations
 
 #### Data:
-This dataset has no sensitive data
+This dataset does contain some sensitive data, such as race, education and income data. Fortunately this dataset is anonymised, thus there is low risk of issues around participant identification. One issue is that some classes from race, or country of origin, are underrepresented. One possible consequence of this is representation bias, where models trained on the data may include bias aroud groups with greater or lesser representation than their proportions within the USA.
+
 #### Usage risks and harms
 There is the potential to use this data for abuse around hiring or salary benchmarking. We used data sliceing to investigate model bias.
 
