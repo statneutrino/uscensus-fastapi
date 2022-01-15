@@ -7,7 +7,7 @@ on the Census Income Data Set to predict salary. The API is live and deployed on
 [https://uscensus-fastapi.herokuapp.com/](https://uscensus-fastapi.herokuapp.com/docs#/default/predict_salary_prediction_post). This app is 
 fast, type-checked and autodocumented API and craeted using FastAPI.
 
-The machine learning is a very simple random forest classifier, and can be replaced easily with better models. However the point of this project was to:
+The machine learning model is a very simple random forest classifier, and can be replaced easily with better models. However the point of this project was to:
 - implement production frameworks such as Continuous Integration and Continuous Deployment
 - ensure pipeliness pass unit tests before deployment
 - testing of local and live API
