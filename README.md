@@ -1,10 +1,12 @@
 # Predicting Salary with US Census Data - Deploying ML model on Heroku with FastAPI
 
-### [Anvil Front-End Link](https://census-salary-predictor.anvil.app/)
+![example workflow](https://github.com/statneutrino/uscensus-fastapi/actions/workflows/python-app.yml/badge.svg)
+
+## [Link to App (Anvil Front-end)](https://census-salary-predictor.anvil.app/)
+
+## [Link to FastAPI docs](https://uscensus-fastapi.herokuapp.com/docs#/default/predict_salary_prediction_post)
 
 ### Summary of API
-
-![example workflow](https://github.com/statneutrino/uscensus-fastapi/actions/workflows/python-app.yml/badge.svg)
 
 This github repository contains an online API for a simple classification model
 on the Census Income Data Set to predict salary. The API is live and deployed on Heroku and can be found at:
