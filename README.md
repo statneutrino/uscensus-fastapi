@@ -4,9 +4,6 @@
 
 ## [Link to App (Anvil Front-end)](https://census-salary-predictor.anvil.app/)
 
-<script src="https://anvil.works/embed.js" async></script>
-<iframe style="width:100%;" data-anvil-embed src="https://census-salary-predictor.anvil.app"></iframe>
-
 ## [Link to FastAPI docs](https://uscensus-fastapi.herokuapp.com/docs#/default/predict_salary_prediction_post)
 
 ### Summary of API
