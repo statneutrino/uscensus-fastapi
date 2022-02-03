@@ -5,7 +5,8 @@
 This github repository contains an online API for a simple classification model
 on the Census Income Data Set to predict salary. The API is live and deployed on Heroku and can be found at:
 [https://uscensus-fastapi.herokuapp.com/](https://uscensus-fastapi.herokuapp.com/docs#/default/predict_salary_prediction_post). This app is 
-fast, type-checked and autodocumented API and created using FastAPI.
+fast, type-checked and autodocumented API and created using FastAPI. I've also created a simple front-end for the API using [Anvil](https://anvil.works).
+You can interact with the app using the front-end at [https://census-salary-predictor.anvil.app/](https://census-salary-predictor.anvil.app/)
 
 The machine learning model is a very simple random forest classifier, and can be replaced easily with better models. However the point of this project was to:
 - implement production frameworks such as Continuous Integration and Continuous Deployment
