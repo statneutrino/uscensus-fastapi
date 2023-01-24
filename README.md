@@ -1,3 +1,6 @@
+## Update
+Sadly, Heroku free-tier has now expired - will try and move this over to another cloud platform
+
 # Predicting Salary with US Census Data - Deploying ML model on Heroku with FastAPI
 
 ![example workflow](https://github.com/statneutrino/uscensus-fastapi/actions/workflows/python-app.yml/badge.svg)
